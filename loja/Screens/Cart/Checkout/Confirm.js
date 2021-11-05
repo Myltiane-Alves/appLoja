@@ -23,7 +23,7 @@ const Confirm = (props) => {
       setProductUpdate();
     };
   }, [props]);
-
+/*
   // Add this
   const getProducts = (x) => {
     const order = x.order.order;
@@ -43,7 +43,6 @@ const Confirm = (props) => {
     }
     
   };
-
   const confirmOrder = () => {
     const order = finalOrder.order.order;
     axios
@@ -71,14 +70,21 @@ const Confirm = (props) => {
         });
       });
   };
+*/
+  const confirmOrder = (props) => {
 
+      setTimeout(() => {
+        props.clearCart();
+        props.navigation.navigate("Cart")
+      }, 500)
+  }
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Confirm Order</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Confirmar pedido</Text>
         {props.route.params ? (
           <View style={{ borderWidth: 1, borderColor: "orange" }}>
-            <Text style={styles.title}>Shipping to:</Text>
+            <Text style={styles.title}>Enviando para:</Text>
             <View style={{ padding: 8 }}>
               <Text>Address: {finalOrder.order.order.shippingAddress1}</Text>
               <Text>Address2: {finalOrder.order.order.shippingAddress2}</Text>
@@ -88,9 +94,8 @@ const Confirm = (props) => {
             </View>
             <Text style={styles.title}>Items:</Text>
             {/* CHANGE THIS */}
-            {productUpdate && (
-              <>
-                {productUpdate.map((x) => {
+          
+                {confirm.order.order.orderItems.map((x) => {
                   return (
                     <ListItem style={styles.listItem} key={x.name} avatar>
                       <Left>
@@ -101,14 +106,13 @@ const Confirm = (props) => {
                           <Text>{x.name}</Text>
                         </Left>
                         <Right>
-                          <Text>$ {x.price}</Text>
+                          <Text>R$ {x.price}</Text>
                         </Right>
                       </Body>
                     </ListItem>
                   );
                 })}
-              </>
-            )}
+              
           </View>
         ) : null}
         <View style={{ alignItems: "center", margin: 20 }}>

@@ -38,7 +38,7 @@ const Payment = (props) => {
        <Container>
            <Header>
                <Body>
-                   <Title>Choose your payment method</Title>
+                   <Title>Escolha o seu método de pagamento</Title>
                </Body>
            </Header>
            <Content>

@@ -13,8 +13,8 @@ import {
   Right,
   H1
 } from "native-base";
-//import { SwipeListView } from 'react-native-swipe-list-view'
-//import CartItem from './CartItem'
+import { SwipeListView } from 'react-native-swipe-list-view'
+import CartItem from './CartItem'
 
 import Icon from "react-native-vector-icons/FontAwesome";
 //import EasyButton from "../../Shared/StyledComponents/EasyButton"
@@ -95,12 +95,10 @@ const Cart = (props) => {
           />
           <View style={styles.bottomContainer}>
             <Left>
-                <Text style={styles.price}>$ {totalPrice}</Text>
+                <Text style={styles.price}>R$ {totalPrice}</Text>
             </Left>
             <Right>
                 <Button
-                  danger
-                  medium
                   onPress={() => props.clearCart()}
                 >
                   <Text style={{ color: 'white' }}>Clear</Text>
@@ -140,14 +138,14 @@ const mapStateToProps = (state) => {
     cartItems: cartItems,
   };
 };
-/*
+
 const mapDispatchToProps = (dispatch) => {
   return {
     clearCart: () => dispatch(actions.clearCart()),
     removeFromCart: (item) => dispatch(actions.removeFromCart(item))
     }
 }
-*/
+
 const styles = StyleSheet.create({
   emptyContainer: {
     height: height,
@@ -183,4 +181,4 @@ const styles = StyleSheet.create({
    
 })
 
-export default  connect(mapStateToProps, null) (Cart);
+export default  connect(mapStateToProps, mapDispatchToProps) (Cart);

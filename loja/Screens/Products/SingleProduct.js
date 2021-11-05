@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Image, View, StyleSheet, Text, ScrollView, Button } from 'react-native';
 import { Left, Right, Container, H1 } from 'native-base';
-import Toast from 'react-native-toast-message';
-import EasyButton from '../../Shared/StyledComponents/EasyButton'
-import TrafficLight from '../../Shared/StyledComponents/TrafficLight'
+
 
 import { connect } from 'react-redux';
 import * as actions from '../../Redux/Actions/cartActions';
@@ -49,36 +47,17 @@ const SingleProduct = (props) => {
                     <H1 style={styles.contentHeader}>{item.name}</H1>
                     <Text style={styles.contentText}>{item.brand}</Text>
                 </View>
-                <View style={styles.availabilityContainer}>
-                    <View style={styles.availability}>
-                        <Text style={{ marginRight: 10 }}>
-                            Availability: {availabilityText}
-                        </Text>
-                        {availability}
-                    </View>
-                    <Text>{item.description}</Text>
-                </View>
+                
             </ScrollView>
 
             <View style={styles.bottomContainer}>
                 <Left>
-                    <Text style={styles.price}>$ {item.price}</Text>
+                    <Text style={styles.price}>R$ {item.price}</Text>
                 </Left>
                 <Right>
-                   <EasyButton 
-                   primary
-                   medium
-                   onPress={() => {props.addItemToCart(item.id),
-                        Toast.show({
-                            topOffset: 60,
-                            type: "success",
-                            text1: `${item.name} added to Cart`,
-                            text2: "Go to your cart to complete order"
-                        })
-                }}
-                   >
-                       <Text style={{ color: 'white'}}>Add</Text>
-                   </EasyButton>
+                   <Button title="Add" />
+
+                   
                 </Right>
             </View>
         </Container>
@@ -144,3 +123,30 @@ const styles = StyleSheet.create({
 })
 
 export default connect(null, mapToDispatchToProps)(SingleProduct);
+
+/*
+<View style={styles.availabilityContainer}>
+                    <View style={styles.availability}>
+                        <Text style={{ marginRight: 10 }}>
+                            Availability: {availabilityText}
+                        </Text>
+                        {availability}
+                    </View>
+                    <Text>{item.description}</Text>
+                </View>
+                
+                
+   primary
+                   medium
+                   onPress={() => {props.addItemToCart(item.id),
+                        Toast.show({
+                            topOffset: 60,
+                            type: "success",
+                            text1: `${item.name} added to Cart`,
+                            text2: "Go to your cart to complete order"
+                        })
+                }}
+                   >
+                       <Text style={{ color: 'white'}}>Add</Text>                
+                
+*/

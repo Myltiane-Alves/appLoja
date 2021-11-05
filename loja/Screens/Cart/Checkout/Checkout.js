@@ -5,14 +5,14 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import FormContainer from '../../../Shared/Form/FormContainer'
 import Input from '../../../Shared/Form/Input'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import AuthGlobal from "../../../Context/store/AuthGlobal"
+//import AuthGlobal from "../../../Context/store/AuthGlobal"
 
 import { connect } from 'react-redux'
 
 const countries = require("../../../assets/countries.json");
 
 const Checkout = (props) => {
-   /* const context = useContext(AuthGlobal)
+   //const context = useContext(AuthGlobal)
 
     const [ orderItems, setOrderItems ] = useState();
     const [ address, setAddress ] = useState();
@@ -26,7 +26,7 @@ const Checkout = (props) => {
     useEffect(() => {
         setOrderItems(props.cartItems)
 
-        if(context.stateUser.isAuthenticated) {
+       /* if(context.stateUser.isAuthenticated) {
             setUser(context.stateUser.user.sub)
         } else {
             props.navigation.navigate("Cart");
@@ -36,13 +36,13 @@ const Checkout = (props) => {
                 text1: "Please Login to Checkout",
                 text2: ""
             });
-        }
+        }*/
 
         return () => {
             setOrderItems();
         }
     }, [])
-*/
+
     const checkOut = () => {
         console.log("orders", orderItems)
         let order = {
@@ -106,7 +106,7 @@ const Checkout = (props) => {
                         iosIcon={<Icon name="arrow-down" color={"#007aff"} />}
                         style={{ width: undefined }}
                         selectedValue={country}
-                        placeholder="Select your country"
+                        placeholder="Selecione seu "
                         placeholderStyle={{ color: '#007aff' }}
                         placeholderIconColor="#007aff"
                         onValueChange={(e) => setCountry(e)}

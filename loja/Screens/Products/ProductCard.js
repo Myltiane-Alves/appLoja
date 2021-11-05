@@ -31,7 +31,7 @@ const ProductCard = (props) => {
                     + '...' : name
                 }
             </Text>
-            <Text style={styles.price}>${price}</Text>
+            <Text style={styles.price}>R${price}</Text>
 
             { countInStock > 0 ? (
                 <View style={{ marginBottom: 60 }}>

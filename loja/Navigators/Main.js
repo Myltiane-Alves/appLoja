@@ -37,17 +37,24 @@ const Main = () => {
         component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Icon name="home" color={color} size={30} />
+            <Icon
+              name="home"
+              style={{ position: "relative"}}
+              color={color} size={30} />
           ),
         }}
       />
       <Tab.Screen
         name="Cart"
-        component={CartNavigator}
+        component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <View>
-              <Icon name="shopping-cart" color={color} size={30} />
+              <Icon 
+               name="shopping-cart"
+               color={color}
+               size={30}              
+              />
               <CartIcon />
             </View>
           ),
@@ -59,7 +66,25 @@ const Main = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <View>
-              <Icon name="shopping-cart" color={color} size={30} />
+              <Icon
+                name="cog"
+                color={color}
+                size={30} />
+              <CartIcon />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="User"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View>
+              <Icon
+                name="user"
+                color={color}
+                size={30} />
               <CartIcon />
             </View>
           ),
