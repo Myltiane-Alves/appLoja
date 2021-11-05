@@ -9,12 +9,12 @@ import SingleProduct from "../Screens/Products/SingleProduct";
 
 import HomeNavigator from "./HomeNavigator";
 import CartNavigator from "./CartNavigator";
-/*
 import UserNavigator from "./UserNavigator";
-import AdminNavigator from "./AdminNavigator";
 
-import AuthGlobal from "../Context/store/AuthGlobal";
-*/
+//import AdminNavigator from "./AdminNavigator";
+
+//import AuthGlobal from "../Context/store/AuthGlobal";
+
 import CartIcon from "../Shared/CartIcon";
 
 const Tab = createBottomTabNavigator();
