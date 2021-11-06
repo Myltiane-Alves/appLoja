@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 import FormContainer from '../../Shared/Form/FormContainer';
 import Input from '../../Shared/Form/Input';
 import Error from '../../Shared/Error';
-import{ KeyboardAwareScrollView, keyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import Toast from 'react-native-toast-message';
+import { KeyboardAwareScrollView, } from "react-native-keyboard-aware-scroll-view"
+
+import axios from "axios";
+import baseURL from "../../assets/common/baseUrl";
 
 
-
-
-const Register= (props) => {
+const Register = (props) => {
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -18,13 +20,45 @@ const Register= (props) => {
 
     const register = () => {
         if (
-           email === '' ||
-           name === '' ||
-           phone === '' ||
-           password === '' 
+            email === '' ||
+            name === '' ||
+            phone === '' ||
+            password === ''
         ) {
             setError("Por favor preencha o formulário corretamente")
         }
+
+        let user = {
+            name: name,
+            email: email,
+            password: password,
+            phone: phone,
+            isAdmin: false
+        }
+
+        axios
+            .post(`${baseURL}users/register`, user)
+            .then((res) => {
+                if (res.status == 200) {
+                    Toast.show({
+                        topOffset: 60,
+                        type: "succes",
+                        text1: "Cadastro bem-sucedido",
+                        text: "Por favor, faça login em sua conta",
+                    })
+                    setTimeout(() => {
+                        props.navigation.navigate("Login");
+                    }, 500)
+                }
+            })
+            .catch((error) => {
+                Toast.show({
+                    topOffset: 60,
+                    type: "error",
+                    text1: "Algo deu errado",
+                    text: "Tente Novamente",
+                })
+            })
     }
     return (
         <KeyboardAwareScrollView
@@ -64,15 +98,15 @@ const Register= (props) => {
                 </View>
                 <View>
                     <Button
-                        title={"Cadastrar"} 
+                        title={"Cadastrar"}
                         onPress={() => register()}
                     />
                 </View>
-                <View  style={[{ marginTop: 40 }, styles.buttonGroup]}>
-                    <Button 
+                <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
+                    <Button
                         title={"Voltar"}
                         onPress={() => props.navigation.navigate("Login")}
-                    
+
                     />
                 </View>
             </FormContainer>
@@ -84,12 +118,12 @@ const Register= (props) => {
 
 const styles = StyleSheet.create({
     buttonGroup: {
-      width: "80%",
-      alignItems: "center",
+        width: "80%",
+        alignItems: "center",
     },
     middleText: {
-      marginBottom: 20,
-      alignSelf: "center",
+        marginBottom: 20,
+        alignSelf: "center",
     },
 });
 
