@@ -55,7 +55,18 @@ const SingleProduct = (props) => {
                     <Text style={styles.price}>R$ {item.price}</Text>
                 </Left>
                 <Right>
-                   <Button title="Add" />
+                   <Button 
+                     title="Add"
+                     onPress={() => {props.addItemToCart(item)
+                        Toast.show({
+                            topOffset: 60,
+                            type: "success",
+                            text1: `${item.name} Adicionado ao carrinho`,
+                            text2: "Volte para o seu carrinho para concluir o pedido"
+                        })
+                    
+                     }}   
+                   />
 
                    
                 </Right>
